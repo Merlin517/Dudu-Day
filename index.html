@@ -1,111 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Happy Birthday 💖</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<audio autoplay loop>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#ffd6e8,#ffeef6);
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  padding: 30px;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+}
+
+.slide.active { display: block; }
+
+h1.cursive {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff5fa2; }
+  to { text-shadow: 0 0 25px #ff2d87; }
+}
+
+.next-btn {
+  margin-top: 30px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4f9a;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.emoji {
+  position: absolute;
+  font-size: 24px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity:1;}
+  to { transform: translateY(-10vh); opacity:0;}
+}
+
+/* Flip cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+.card {
+  perspective: 800px;
+}
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  transform-style: preserve-3d;
+  transition: 0.6s;
+}
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.card-front {
+  background: #ff9fc7;
+}
+.card-back {
+  background: white;
+  transform: rotateY(180deg);
+  padding:5px;
+  font-size:12px;
+}
+
+/* Heart burst */
+.heart {
+  font-size: 40px;
+  position: absolute;
+  animation: pop 1.5s ease forwards;
+}
+@keyframes pop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity:0;}
+}
+</style>
+</head>
+
+<body onclick="startMusic()">
+
+<audio id="music" loop>
   <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<div id="emojis"></div>
-
-<div class="slides">
-
-  <!-- SLIDE 1 -->
-  <section class="slide active">
-    <h1 class="cursive type">Happy Birthday Handsome 💖</h1>
-    <p class="note">
-      You make ordinary moments feel special ✨<br>
-      Your smile has its own magic 🌙<br>
-      Today is about YOU 💫<br>
-      Always cherished 🤍
-    </p>
-    <button onclick="nextSlide()">Next 💕</button>
-  </section>
-
-  <!-- SLIDE 2 -->
-  <section class="slide">
-    <h2>Close your eyes…</h2>
-    <p>Make a wish 🎈</p>
-    <button onclick="nextSlide()">Wish Made ✨</button>
-  </section>
-
-  <!-- SLIDE 3 -->
-  <section class="slide">
-    <h2>Cake Time 🎂</h2>
-    <div class="cake">🎂🔥</div>
-    <button onclick="blow()">Blow Candles 🎉</button>
-  </section>
-
-  <!-- SLIDE 4 -->
-  <section class="slide">
-    <h2>Before we go on…</h2>
-    <p>You are genuinely special 💗</p>
-    <button onclick="nextSlide()">Continue 💫</button>
-  </section>
-
-  <!-- SLIDE 5 FLIP CARDS -->
-  <section class="slide">
-    <h2>Tap the Cards 💌</h2>
-    <div class="cards">
-      <div class="card" onclick="flip(this)"><div class="front">💗</div><div class="back">Your smile heals.</div></div>
-      <div class="card" onclick="flip(this)"><div class="front">✨</div><div class="back">You matter.</div></div>
-      <div class="card" onclick="flip(this)"><div class="front">🌙</div><div class="back">Soft heart, strong soul.</div></div>
-      <div class="card" onclick="flip(this)"><div class="front">🔥</div><div class="back">Rare energy.</div></div>
-    </div>
-    <button onclick="nextSlide()">Next 💕</button>
-  </section>
-
-  <!-- SLIDE 6 FUNNY -->
-  <section class="slide">
-    <h2>Some Truths 😄</h2>
-    <p>You’re cute even when you’re annoying 😌</p>
-    <button onclick="nextSlide()">😂</button>
-  </section>
-
-  <!-- SLIDE 7 HEART BURSTS -->
-  <section class="slide">
-    <h2>Tap the Hearts 💗</h2>
-    <div class="heart-area">
-      <span onclick="burst(this)">💖</span>
-      <span onclick="burst(this)">💗</span>
-      <span onclick="burst(this)">💘</span>
-    </div>
-  </section>
-
-  <!-- SLIDE 8 DEEP -->
-  <section class="slide">
-    <p>Some people don’t try to shine…<br>they just do ✨</p>
-    <button onclick="nextSlide()">💫</button>
-  </section>
-
-  <!-- SLIDE 9 LOCK LETTER -->
-  <section class="slide">
-    <h2>🔒 A Letter</h2>
-    <button onclick="unlock()">Unlock 💌</button>
-    <p id="letter" class="hidden">
-      You feel like comfort.<br>
-      Like warmth on hard days.<br>
-      Soft. Real. Rare. 💗
-    </p>
-  </section>
-
-  <!-- SLIDE 10 END -->
-  <section class="slide">
-    <p class="ending">
-      To the one who makes ordinary moments special,<br>
-      May this year bring you peace, laughter,<br>
-      and everything your heart quietly wishes for.<br>
-      <b>Always rooting for you ✨</b>
-    </p>
-  </section>
-
+<!-- SLIDE 1 -->
+<div class="slide active">
+  <h1 class="cursive">Happy Birthday Handsome 💖</h1>
+  <p>You make life brighter ✨</p>
+  <p>You make love feel safe 🤍</p>
+  <p>You make ordinary days special 🌸</p>
+  <button class="next-btn" onclick="nextSlide()">Start the magic ✨</button>
 </div>
-  <script src="script.js" defer></script>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <h1>Make a Wish 🌟</h1>
+  <p>Close your eyes & smile 😊</p>
+  <button class="next-btn" onclick="nextSlide()">Done 💫</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <h1>Cut the Cake 🎂</h1>
+  <p>Blow the candles 🕯️</p>
+  <button class="next-btn" onclick="nextSlide()">Yum 😋</button>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <h1>Little Notes 💌</h1>
+  <div class="cards">
+    <div class="card"><div class="card-inner"><div class="card-front">💗</div><div class="card-back">So amazing ✨</div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-front">💗</div><div class="card-back">My sunshine ☀️</div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-front">💗</div><div class="card-back">So proud of you 💖</div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-front">💗</div><div class="card-back">Heart stealer 💘</div></div></div>
+  </div>
+  <button class="next-btn" onclick="nextSlide()">More 💞</button>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <h1>Just Feel This ❤️</h1>
+  <button class="next-btn" onclick="heartBurst()">Tap 💓</button>
+  <button class="next-btn" onclick="nextSlide()">Next ✨</button>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+  <h1>Funny You 😜</h1>
+  <p>Too handsome to handle 😏</p>
+  <p>Certified heart stealer 💘</p>
+  <p>You’re stuck with me forever 😆</p>
+  <button class="next-btn" onclick="nextSlide()">Aww 💖</button>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+  <h1>From My Heart 💌</h1>
+  <p>I choose you. Every day. Forever. ❤️</p>
+  <button class="next-btn" onclick="nextSlide()">Almost 🎁</button>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+  <h1>Always Rooting For You ✨</h1>
+  <p>Happy Birthday 🤍</p>
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+
+function nextSlide() {
+  slides[current].classList.remove('active');
+  current++;
+  if(current < slides.length){
+    slides[current].classList.add('active');
+  }
+}
+
+function heartBurst() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerText = '❤️';
+  heart.style.left = Math.random()*80 + 'vw';
+  heart.style.top = Math.random()*60 + 'vh';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),1500);
+}
+
+function startMusic(){
+  document.getElementById('music').play();
+}
+
+setInterval(()=>{
+  const e = document.createElement('div');
+  e.className='emoji';
+  e.innerText=['💖','✨','💫','💗','💞'][Math.floor(Math.random()*5)];
+  e.style.left=Math.random()*100+'vw';
+  document.body.appendChild(e);
+  setTimeout(()=>e.remove(),6000);
+},800);
+</script>
+
 </body>
 </html>

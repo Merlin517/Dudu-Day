@@ -1,3 +1,4 @@
+alert("JS is working");
 let slides = document.querySelectorAll(".slide");
 let index = 0;
 

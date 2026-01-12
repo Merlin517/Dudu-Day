@@ -1,65 +1,32 @@
-let current = 0;
+let slides = document.querySelectorAll(".slide");
+let index = 0;
 
-const slides = document.querySelectorAll(".slide");
-const music = document.getElementById("bgMusic");
-
-function showSlide(index) {
-  slides.forEach(slide => slide.classList.remove("active"));
+function nextSlide() {
+  slides[index].classList.remove("active");
+  index++;
   slides[index].classList.add("active");
 }
 
-function nextSlide() {
-  if (current === 0 && music) {
-    music.play().catch(() => {});
-  }
-
-  if (current < slides.length - 1) {
-    current++;
-    showSlide(current);
-  }
+function flip(card) {
+  card.classList.toggle("flipped");
 }
 
-/* LOCK LETTER */
-function unlockLetter() {
+function blow() {
+  nextSlide();
+}
+
+function burst(el) {
+  el.innerText = "💥 You’re loved 💗";
+}
+
+function unlock() {
   document.getElementById("letter").classList.remove("hidden");
 }
 
-/* HEART BURSTS – SAFE MODE */
-const heartQuotes = [
-  "Some people feel like home 💕",
-  "You were my favorite surprise ✨",
-  "Soft hearts, loud love 💖"
-];
-
-let heartIndex = 0;
-
-function startHearts() {
-  const container = document.getElementById("heartContainer");
-  container.innerHTML = "";
-  heartIndex = 0;
-
-  const interval = setInterval(() => {
-    if (heartIndex >= heartQuotes.length) {
-      clearInterval(interval);
-      return;
-    }
-
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "💗";
-    heart.style.left = "50%";
-
-    const text = document.createElement("p");
-    text.innerText = heartQuotes[heartIndex];
-    text.style.marginTop = "90px";
-
-    container.innerHTML = "";
-    container.appendChild(heart);
-
-    setTimeout(() => {
-      container.appendChild(text);
-    }, 1800);
-
-    heartIndex++;
-  }, 4000);
-}
+setInterval(() => {
+  const emoji = document.createElement("span");
+  emoji.innerText = ["💖","✨","💗","🌸","💫"][Math.floor(Math.random()*5)];
+  emoji.style.left = Math.random()*100 + "vw";
+  document.getElementById("emojis").appendChild(emoji);
+  setTimeout(() => emoji.remove(), 8000);
+}, 800);

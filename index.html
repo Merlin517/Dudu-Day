@@ -1,1 +1,287 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{overflow:hidden;background:#fdeef4}
+section{width:100vw;height:100vh;display:none;align-items:center;justify-content:center;flex-direction:column;position:absolute;top:0;left:0;padding:20px;text-align:center}
+section.active{display:flex}
+
+h1.cursive{font-family:'Great Vibes',cursive;font-size:3.2rem;color:#c9184a}
+p{max-width:600px;margin:10px auto;font-size:1.1rem;color:#333}
+
+.nextBtn{
+margin-top:30px;
+padding:12px 28px;
+border-radius:30px;
+border:none;
+background:#ff4d6d;
+color:#fff;
+font-size:1rem;
+cursor:pointer;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.08)}
+100%{transform:scale(1)}
+}
+
+/* Floating Emojis */
+.emoji{
+position:absolute;
+font-size:2rem;
+animation:floatUp 8s linear forwards;
+pointer-events:none;
+}
+@keyframes floatUp{
+0%{opacity:0;transform:translateY(40px)}
+10%{opacity:1}
+100%{opacity:0;transform:translateY(-120vh)}
+}
+
+/* Cake */
+.cake{font-size:8rem;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+
+/* Flip Cards */
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+max-width:700px;
+}
+.card{
+width:150px;height:150px;
+perspective:1000px;
+}
+.inner{
+width:100%;height:100%;
+position:relative;
+transform-style:preserve-3d;
+transition:transform .8s;
+}
+.card.flipped .inner{transform:rotateY(180deg)}
+.face{
+position:absolute;width:100%;height:100%;
+backface-visibility:hidden;
+border-radius:15px;
+display:flex;align-items:center;justify-content:center;
+padding:10px;
+}
+.front{background:#ffe5ec;font-size:1.1rem}
+.back{background:#fff;transform:rotateY(180deg);font-size:.9rem}
+
+/* Heart Burst */
+.heart{
+font-size:3rem;
+position:absolute;
+cursor:pointer;
+animation:rise 4s linear forwards;
+}
+@keyframes rise{
+0%{bottom:-60px;opacity:1}
+100%{bottom:100vh;opacity:0}
+}
+.quoteBox{
+position:absolute;
+background:#fff;
+padding:20px 25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+font-size:1.1rem;
+}
+
+/* Letter */
+.letter{
+background:#fff;
+padding:25px;
+border-radius:20px;
+max-width:650px;
+line-height:1.7;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+/* Ending */
+.end h1{font-size:2.5rem}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SLIDE 1 -->
+<section class="active">
+<h1 class="cursive" id="typeText"></h1>
+<p id="note"></p>
+<button class="nextBtn">Tap for magic ✨</button>
+</section>
+
+<!-- SLIDE 2 -->
+<section>
+<h1>🌙 Make a Wish</h1>
+<p>Close your eyes…<br>Make a wish…<br>I hope it finds you 🤍</p>
+<button class="nextBtn">Wish made 🌠</button>
+</section>
+
+<!-- SLIDE 3 -->
+<section>
+<div class="cake">🎂</div>
+<p>Let’s celebrate YOU 🥳</p>
+<button class="nextBtn">Cut the cake 🍰</button>
+</section>
+
+<!-- SLIDE 4 -->
+<section>
+<h1>Little Surprises 💌</h1>
+<div class="cards" id="cards"></div>
+<button class="nextBtn">More 💖</button>
+</section>
+
+<!-- SLIDE 5 -->
+<section id="heartSlide">
+<h1>Tap the Hearts ❤️</h1>
+</section>
+
+<!-- SLIDE 6 -->
+<section>
+<h1>Funny Zone 😂</h1>
+<p>😏 Too handsome to handle</p>
+<p>💘 Certified heart stealer</p>
+<p>😜 Warning: You’re stuck with me forever</p>
+<p>😂 Loving me = smiling too much</p>
+<button class="nextBtn">Hehe 😜</button>
+</section>
+
+<!-- SLIDE 7 -->
+<section>
+<h1>Funny Truths 🤭</h1>
+<p>You act cool but care deeply 🤍</p>
+<p>You’re impossible not to love 💖</p>
+<p>You’re secretly soft 🫶</p>
+<button class="nextBtn">Aww 🥹</button>
+</section>
+
+<!-- SLIDE 8 -->
+<section>
+<div class="letter">
+<p>To the man I want to spend my whole life with ❤️<br><br>
+You came into my life unexpectedly, and somehow became my safest place 💖.
+Thank you for loving me, choosing me, and standing by me 🤍.
+I promise my heart, my soul, and all my love — always ♾️</p>
+</div>
+<button class="nextBtn">Almost done 💫</button>
+</section>
+
+<!-- SLIDE 9 -->
+<section class="end">
+<h1>💖</h1>
+<p>To the one who makes ordinary moments special ✨<br>
+May this year bring you peace, laughter,<br>
+and everything your heart quietly wishes for 🤍<br><br>
+Always rooting for you 💫</p>
+</section>
+
+<script>
+/* Slides */
+const slides=document.querySelectorAll('section');
+let i=0;
+document.querySelectorAll('.nextBtn').forEach(btn=>{
+btn.onclick=()=>{
+slides[i].classList.remove('active');
+i++;
+slides[i].classList.add('active');
+};
+});
+
+/* Typing */
+const text="Happy Birthday Handsome 💖";
+let idx=0;
+const type=document.getElementById('typeText');
+const note=document.getElementById('note');
+function typing(){
+if(idx<text.length){
+type.innerHTML+=text.charAt(idx);
+idx++;
+setTimeout(typing,120);
+}else{
+note.innerHTML="Another year of you being amazing 💫<br>Another year I’m grateful 💖";
+}
+}
+typing();
+
+/* Emojis */
+const emojis=["💖","✨","🥰","🌸","💫","🤍","😍"];
+setInterval(()=>{
+const e=document.createElement("div");
+e.className="emoji";
+e.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+e.style.left=Math.random()*90+"vw";
+document.body.appendChild(e);
+setTimeout(()=>e.remove(),8000);
+},2000);
+
+/* Flip Cards */
+const quotes=[
+"You make ordinary days special 💫",
+"Your smile changes everything 😊",
+"You feel like home 🤍",
+"I choose you, always ♾️",
+"You're my favorite thought 🌙",
+"Love looks good on you 💖",
+"You’re comfort 💞",
+"Forever with you 💍"
+];
+const cards=document.getElementById("cards");
+quotes.forEach(q=>{
+const c=document.createElement("div");
+c.className="card";
+c.innerHTML=`
+<div class="inner">
+<div class="face front">Tap me 💖</div>
+<div class="face back">${q}</div>
+</div>`;
+c.onclick=()=>c.classList.toggle("flipped");
+cards.appendChild(c);
+});
+
+/* Heart Burst */
+const heartQuotes=[
+"You’re my safe place 🤍",
+"My heart chose you 💖",
+"You mean everything ✨",
+"I adore you ♾️"
+];
+let hIndex=0;
+function spawnHeart(){
+if(hIndex>=heartQuotes.length)return;
+const h=document.createElement("div");
+h.className="heart";
+h.innerText="❤️";
+h.style.left=Math.random()*80+"vw";
+h.onclick=()=>{
+h.remove();
+const q=document.createElement("div");
+q.className="quoteBox";
+q.innerText=heartQuotes[hIndex++];
+document.getElementById("heartSlide").appendChild(q);
+setTimeout(()=>{q.remove();spawnHeart();},2000);
+};
+document.getElementById("heartSlide").appendChild(h);
+}
+spawnHeart();
+</script>
+
+</body>
+</html>

@@ -2,119 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Happy Birthday ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <title>Happy Birthday 💖</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<audio id="bgMusic" src="song.mp3" loop></audio>
+<audio autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-<div id="slides">
+<div id="emojis"></div>
 
-  <!-- Slide 1 -->
+<div class="slides">
+
+  <!-- SLIDE 1 -->
   <section class="slide active">
-    <h1 class="cursive typing">Happy Birthday DUDU 💖</h1>
+    <h1 class="cursive type">Happy Birthday Handsome 💖</h1>
     <p class="note">
-      You make every day brighter ✨<br>
-      Today is all about you 🎂<br>
-      May your smile never fade 😊<br>
-      And love always find you 💕
+      You make ordinary moments feel special ✨<br>
+      Your smile has its own magic 🌙<br>
+      Today is about YOU 💫<br>
+      Always cherished 🤍
     </p>
-    <button onclick="nextSlide()">Continue ✨</button>
-  </section>
-
-  <!-- Slide 2 -->
-  <section class="slide">
-    <h2 class="title">Make a Wish ✨</h2>
-    <p>Close your eyes and wish something magical 🌙</p>
-    <button onclick="nextSlide()">Next 💫</button>
-  </section>
-
-  <!-- Slide 3 -->
-  <section class="slide">
-    <h2 class="title">Cake Cut 🎂</h2>
-    <div class="cake">🎂</div>
-    <button onclick="nextSlide()">Yay 🎉</button>
-  </section>
-
-  <!-- Slide 4 Flip Cards -->
-  <section class="slide">
-    <h2 class="title">Little Surprises 💌</h2>
-
-    <div class="flip-grid">
-      <div class="flip-card">
-        <div class="flip-inner">
-          <div class="front">💌 Tap me</div>
-          <div class="back">You're not special just today, you're special every day 💖</div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-inner">
-          <div class="front">😉 Guess what?</div>
-          <div class="back">Thinking about you always makes me smile 😊</div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-inner">
-          <div class="front">🎁 Surprise</div>
-          <div class="back">You're my favorite reason to believe in magic ✨</div>
-        </div>
-      </div>
-
-      <div class="flip-card">
-        <div class="flip-inner">
-          <div class="front">🤍 One truth</div>
-          <div class="back">If happiness had a face, it would look like you 🫶</div>
-        </div>
-      </div>
-    </div>
-
     <button onclick="nextSlide()">Next 💕</button>
   </section>
 
-  <!-- Slide 5 Heart Bursts -->
+  <!-- SLIDE 2 -->
   <section class="slide">
-    <h2 class="title">From Bubus Heart 💖</h2>
-    <div id="heartContainer"></div>
-    <button onclick="startHearts()">Start 💗</button>
+    <h2>Close your eyes…</h2>
+    <p>Make a wish 🎈</p>
+    <button onclick="nextSlide()">Wish Made ✨</button>
   </section>
 
-  <!-- Slide 6 Funny -->
+  <!-- SLIDE 3 -->
   <section class="slide">
-    <h2 class="title">Fun Zone 😂</h2>
-    <p>Still cute. Still annoying. Still irresistible 😌💖</p>
-    <p>Smile because some onesomewhere is happy to have you and obviously dats ME 😉❤️ </p>
-    <button onclick="nextSlide()">Next 😜</button>
+    <h2>Cake Time 🎂</h2>
+    <div class="cake">🎂🔥</div>
+    <button onclick="blow()">Blow Candles 🎉</button>
   </section>
 
-  <!-- Slide 7 Lock Letter -->
+  <!-- SLIDE 4 -->
   <section class="slide">
-    <h2 class="title">A Letter 🔒</h2>
-    <button onclick="unlockLetter()">Unlock 💌</button>
+    <h2>Before we go on…</h2>
+    <p>You are genuinely special 💗</p>
+    <button onclick="nextSlide()">Continue 💫</button>
+  </section>
+
+  <!-- SLIDE 5 FLIP CARDS -->
+  <section class="slide">
+    <h2>Tap the Cards 💌</h2>
+    <div class="cards">
+      <div class="card" onclick="flip(this)"><div class="front">💗</div><div class="back">Your smile heals.</div></div>
+      <div class="card" onclick="flip(this)"><div class="front">✨</div><div class="back">You matter.</div></div>
+      <div class="card" onclick="flip(this)"><div class="front">🌙</div><div class="back">Soft heart, strong soul.</div></div>
+      <div class="card" onclick="flip(this)"><div class="front">🔥</div><div class="back">Rare energy.</div></div>
+    </div>
+    <button onclick="nextSlide()">Next 💕</button>
+  </section>
+
+  <!-- SLIDE 6 FUNNY -->
+  <section class="slide">
+    <h2>Some Truths 😄</h2>
+    <p>You’re cute even when you’re annoying 😌</p>
+    <button onclick="nextSlide()">😂</button>
+  </section>
+
+  <!-- SLIDE 7 HEART BURSTS -->
+  <section class="slide">
+    <h2>Tap the Hearts 💗</h2>
+    <div class="heart-area">
+      <span onclick="burst(this)">💖</span>
+      <span onclick="burst(this)">💗</span>
+      <span onclick="burst(this)">💘</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 DEEP -->
+  <section class="slide">
+    <p>Some people don’t try to shine…<br>they just do ✨</p>
+    <button onclick="nextSlide()">💫</button>
+  </section>
+
+  <!-- SLIDE 9 LOCK LETTER -->
+  <section class="slide">
+    <h2>🔒 A Letter</h2>
+    <button onclick="unlock()">Unlock 💌</button>
     <p id="letter" class="hidden">
-      To the one who makes my heart feel safe 💖<br>
-      Every little moment with you feels special ✨<br>
-      Soft smiles, silly laughs, quiet care 🫶<br>
-      You mean more than words can ever say  💕
+      You feel like comfort.<br>
+      Like warmth on hard days.<br>
+      Soft. Real. Rare. 💗
     </p>
-    <button onclick="nextSlide()">Next 🌸</button>
   </section>
 
-  <!-- Slide 8 End -->
+  <!-- SLIDE 10 END -->
   <section class="slide">
-    <h2 class="title">Always rooting for you ✨</h2>
-    <p>
-      To the one who makes ordinary moments special 💖<br>
+    <p class="ending">
+      To the one who makes ordinary moments special,<br>
       May this year bring you peace, laughter,<br>
-      and everything your heart quietly wishes for 🌙<br>
-      Always rooting for you ✨
+      and everything your heart quietly wishes for.<br>
+      <b>Always rooting for you ✨</b>
     </p>
   </section>
 

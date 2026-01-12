@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bgMusic" src="song.mp3" loop></audio>
+
+<div id="slides">
+
+  <!-- Slide 1 -->
+  <section class="slide active">
+    <h1 class="cursive typing">Happy Birthday DUDU 💖</h1>
+    <p class="note">
+      You make every day brighter ✨<br>
+      Today is all about you 🎂<br>
+      May your smile never fade 😊<br>
+      And love always find you 💕
+    </p>
+    <button onclick="nextSlide()">Continue ✨</button>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide">
+    <h2 class="title">Make a Wish ✨</h2>
+    <p>Close your eyes and wish something magical 🌙</p>
+    <button onclick="nextSlide()">Next 💫</button>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide">
+    <h2 class="title">Cake Cut 🎂</h2>
+    <div class="cake">🎂</div>
+    <button onclick="nextSlide()">Yay 🎉</button>
+  </section>
+
+  <!-- Slide 4 Flip Cards -->
+  <section class="slide">
+    <h2 class="title">Little Surprises 💌</h2>
+
+    <div class="flip-grid">
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="front">💌 Tap me</div>
+          <div class="back">You're not special just today, you're special every day 💖</div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="front">😉 Guess what?</div>
+          <div class="back">Thinking about you always makes me smile 😊</div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="front">🎁 Surprise</div>
+          <div class="back">You're my favorite reason to believe in magic ✨</div>
+        </div>
+      </div>
+
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="front">🤍 One truth</div>
+          <div class="back">If happiness had a face, it would look like you 🫶</div>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="nextSlide()">Next 💕</button>
+  </section>
+
+  <!-- Slide 5 Heart Bursts -->
+  <section class="slide">
+    <h2 class="title">From Bubus Heart 💖</h2>
+    <div id="heartContainer"></div>
+    <button onclick="startHearts()">Start 💗</button>
+  </section>
+
+  <!-- Slide 6 Funny -->
+  <section class="slide">
+    <h2 class="title">Fun Zone 😂</h2>
+    <p>Still cute. Still annoying. Still irresistible 😌💖</p>
+    <p>Smile because some onesomewhere is happy to have you and obviously dats ME 😉❤️ </p>
+    <button onclick="nextSlide()">Next 😜</button>
+  </section>
+
+  <!-- Slide 7 Lock Letter -->
+  <section class="slide">
+    <h2 class="title">A Letter 🔒</h2>
+    <button onclick="unlockLetter()">Unlock 💌</button>
+    <p id="letter" class="hidden">
+      To the one who makes my heart feel safe 💖<br>
+      Every little moment with you feels special ✨<br>
+      Soft smiles, silly laughs, quiet care 🫶<br>
+      You mean more than words can ever say  💕
+    </p>
+    <button onclick="nextSlide()">Next 🌸</button>
+  </section>
+
+  <!-- Slide 8 End -->
+  <section class="slide">
+    <h2 class="title">Always rooting for you ✨</h2>
+    <p>
+      To the one who makes ordinary moments special 💖<br>
+      May this year bring you peace, laughter,<br>
+      and everything your heart quietly wishes for 🌙<br>
+      Always rooting for you ✨
+    </p>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
